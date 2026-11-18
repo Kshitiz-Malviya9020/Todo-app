@@ -1,3 +1,4 @@
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict  # type: ignore
 
 
@@ -13,6 +14,13 @@ class Settings(BaseSettings):
         case_sensitive=True,
         extra="ignore",
     )
+
+    # Database configuration
+    DB_HOST: str = "localhost"
+    DB_PORT: int = 3306
+    DB_NAME: str = "todo_db"
+    DB_USER: str = "todo_user"
+    DB_PASSWORD: SecretStr
 
 
 settings = Settings()
